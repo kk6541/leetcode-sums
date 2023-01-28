@@ -1,12 +1,5 @@
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        stack=[]
-        result=[]
-        while root or stack:
-            while root:
-                result.append(root.val)
-                stack.append(root)
-                root=root.left
-            root=stack.pop()
-            root=root.right
-        return result
+        if root is None:
+            return []
+        return [root.val]+self.preorderTraversal(root.left)+self.preorderTraversal(root.right) 
