@@ -1,0 +1,15 @@
+class Solution:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if root == None:
+            return 0
+        ldep=self.minDepth(root.left)
+        rdep=self.minDepth(root.right)
+        if ldep==0:
+            return rdep+1
+        elif rdep==0:
+            return ldep+1
+        else:
+            if(ldep < rdep):
+                return ldep+1
+            else:
+                return rdep+1
