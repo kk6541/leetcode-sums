@@ -1,0 +1,11 @@
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root == None:
+            return 0
+        ldep=self.maxDepth(root.left)
+        rdep=self.maxDepth(root.right)
+        if(ldep > rdep):
+            return ldep+1
+        else:
+            return rdep+1
+        
