@@ -1,0 +1,12 @@
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        def path(root,sum):
+            if root is None :
+                return 0
+            sum+=root.val
+            if not root.left and not root.right:
+                return sum==targetSum
+            lef=path(root.left,sum)
+            rig=path(root.right,sum)
+            return lef or rig
+        return path(root,0)
