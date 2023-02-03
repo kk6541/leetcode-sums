@@ -1,0 +1,11 @@
+class Solution:
+    def bstFromPreorder(self, root: List[int]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        rt=TreeNode(root[0])
+        i=1
+        while i<len(root) and rt.val>root[i]:
+            i+=1
+        rt.left=self.bstFromPreorder(root[1:i])
+        rt.right=self.bstFromPreorder(root[i:])
+        return rt
