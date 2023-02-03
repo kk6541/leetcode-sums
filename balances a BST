@@ -1,0 +1,19 @@
+class Solution:
+    def balanceBST(self, root: TreeNode) -> TreeNode:
+        res=[]
+        def inorder(rt,res):
+            if not rt:
+                return
+            inorder(rt.left,res)
+            res.append(rt.val)
+            inorder(rt.right,res)
+        def tree(left,right):
+            if right<left:
+                return 
+            mid=(left+right)//2
+            rt=TreeNode(res[mid])
+            rt.left=tree(left,mid-1)
+            rt.right=tree(mid+1,right)
+            return rt
+        inorder(root,res)
+        return tree(0,len(res)-1)
