@@ -1,0 +1,14 @@
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        a=[]
+        def inorder(root,a):
+            if not root:
+                return None
+            inorder(root.left,a)
+            a.append(root.val)
+            inorder(root.right,a)
+        inorder(root,a)
+        for i in range(1,len(a)):
+            if a[i]<=a[i-1]:
+                return False
+        return True
