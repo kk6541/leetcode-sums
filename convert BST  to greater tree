@@ -1,0 +1,12 @@
+class Solution:
+    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def postorder(r,res):
+            if not r:
+                return res
+            res=postorder(r.right,res)
+            res+=r.val
+            r.val=res
+            res=postorder(r.left,res)
+            return res
+        postorder(root,0)
+        return root
